@@ -4,6 +4,7 @@ import { optimize } from 'svgo';
 import { Toast } from '@moohng/tui';
 import DropArea from './components/DropArea.vue';
 import OutputTable from './components/OutputTable.vue';
+import Footer from './components/Footer.vue';
 
 const svgList = ref([]);
 
@@ -73,13 +74,19 @@ if (typeof utools !== 'undefined' && typeof utools.onPluginEnter === 'function')
 } else {
   console.log('当前不是utools环境');
 }
+
+const onReplaceAll = () => {
+  const list = svgList.value.filter((item) => item.path);
+  if (svgList.length > 0) {
+    window.replaceFileForLocal(list);
+  } else {
+    Toast.error('无可替换的本地文件');
+  }
+}
 </script>
 
 <template>
   <DropArea v-if="!svgList.length" />
   <OutputTable v-if="svgList.length > 0" :list="svgList" />
+  <Footer v-if="svgList.length > 0" :count="svgList.length" @replaceAll="onReplaceAll" @clear="svgList = []" />
 </template>
-
-<style>
-@import '@moohng/tui/lib/Toast/style/index.css';
-</style>

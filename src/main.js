@@ -5,7 +5,7 @@ import App from './App.vue'
 
 if (typeof utools === 'undefined') {
   window.utools = {
-    showNotification: (text, options) => Toast({ text, ...options }),
+    showNotification: (text, options) => Toast.success(text),
   }
 }
 

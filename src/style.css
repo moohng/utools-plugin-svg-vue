@@ -1,3 +1,5 @@
+@import '@moohng/tui/lib/Toast/style/index.css';
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +15,10 @@
 
   --table-hd-color: #f6f8fb;
   --border-color: #e5e5e5;
+
+  --danger-color: #dc3545;
+  --warning-color: #ff9900;
+  --success-color: #28a745;
 }
 
 body {
@@ -33,4 +39,12 @@ body {
     --table-hd-color: #373839;
     --border-color: #444;
   }
+}
+
+.tui-toast[data-position=top] {
+  padding: 6px 16px;
+  top: 24px !important;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
 }

@@ -12,12 +12,12 @@
         <span class="reduce">{{ ((item.size - item.originalSize) * 100 / item.originalSize).toFixed(2) }}%</span>
       </div>
       <div class="operation">
-        <a class="btn" v-if="item.path" :title="item.code" @click="onReplace(toRaw(item))">替换</a>
-        <a class="btn" :title="item.code" @click="onDownload(item)">保存</a>
+        <Button size="sm" :disabled="!item.path" :title="item.code" @click="onReplace(toRaw(item))">替换</Button>
+        <Button size="sm" :title="item.code" @click="onDownload(item)">保存</Button>
         <i class="line"></i>
-        <a class="btn" :title="item.code" @click="onCopy(item.code)">复制</a>
-        <a class="btn" :title="item.base64" @click="onCopy(item.base64)">Base64</a>
-        <a class="btn" :title="item.encode" @click="onCopy(item.encode)">CSS</a>
+        <Button size="sm" :title="item.code" @click="onCopy(item.code)">复制</Button>
+        <Button size="sm" :title="item.base64" @click="onCopy(item.base64)">Base64</Button>
+        <Button size="sm" :title="item.encode" @click="onCopy(item.encode)">CSS</Button>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
 <script setup>
 import { toRaw } from 'vue';
 import clipboard from 'clipboard';
+import Button from './Button.vue';
 
 const props = defineProps({
   list: {
@@ -53,7 +54,6 @@ const onReplace = window.replaceFileForLocal;
 
 <style scoped>
 .output {
-  margin-top: 16px;
   border-top: 1px solid var(--border-color);
 }
 .output .item {
@@ -94,7 +94,7 @@ const onReplace = window.replaceFileForLocal;
   display: inline-block;
   margin-left: 16px;
   width: 68px;
-  color: #0d6;
+  color: var(--success-color);
 }
 .item .operation {
   margin-left: 24px;
@@ -107,19 +107,5 @@ const onReplace = window.replaceFileForLocal;
   height: 8px;
   vertical-align: middle;
   border-left: 1px solid var(--border-color);
-}
-.operation .btn {
-  padding: 4px 6px;
-  font-size: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 2px;
-  cursor: pointer;
-}
-.operation .btn:hover {
-  color: #26b;
-  border-color: currentColor;
-}
-.operation .btn + .btn {
-  margin-left: 4px;
 }
 </style>
