@@ -1,20 +1,23 @@
 <template>
   <div class="output">
     <div class="item" v-for="item in list" :key="item.key">
-      <i class="preview" v-html="item.code"></i>
+      <div class="file">
+        <i class="preview" v-html="item.code"></i>
+        <span class="name" v-if="item.name">{{ item.name }}</span>
+      </div>
       <div class="size">
-        <span class="original">{{ item.originalSize.toFixed(2) }}k</span>
+        <span class="original">{{ item.originalSize.toFixed(2) }}KB</span>
         <span>></span>
-        <span class="now">{{ item.size.toFixed(2) }}k</span>
+        <span class="now">{{ item.size.toFixed(2) }}KB</span>
         <span class="reduce">{{ ((item.size - item.originalSize) * 100 / item.originalSize).toFixed(2) }}%</span>
       </div>
       <div class="operation">
         <a class="btn" v-if="item.path" :title="item.code" @click="onReplace(toRaw(item))">替换</a>
-        <a class="btn" :title="item.code" @click="onDownload(item.code)">保存</a>
-        <a class="btn" :title="item.code" @click="onCopy(item.code)">复制</a>
+        <a class="btn" :title="item.code" @click="onDownload(item)">保存</a>
         <i class="line"></i>
+        <a class="btn" :title="item.code" @click="onCopy(item.code)">复制</a>
         <a class="btn" :title="item.base64" @click="onCopy(item.base64)">Base64</a>
-        <a class="btn" :title="item.encode" @click="onCopy(item.encode)">CSS转义</a>
+        <a class="btn" :title="item.encode" @click="onCopy(item.encode)">CSS</a>
       </div>
     </div>
   </div>
@@ -23,7 +26,6 @@
 <script setup>
 import { toRaw } from 'vue';
 import clipboard from 'clipboard';
-import { Toast } from '@moohng/tui';
 
 const props = defineProps({
   list: {
@@ -35,13 +37,13 @@ const props = defineProps({
 const onCopy = (str) => {
   clipboard.copy(str);
 
-  Toast.success('复制成功');
+  utools.showNotification('已成功复制SVG代码');
 };
 
-const onDownload = (str) => {
+const onDownload = (info) => {
   const $a = document.createElement('a');
-  $a.href = URL.createObjectURL(new Blob([str]));
-  $a.download = 'abc.svg';
+  $a.href = URL.createObjectURL(new Blob([info.code]));
+  $a.download = info.name || 'icon.svg';
   $a.click();
   URL.revokeObjectURL($a.href);
 };
@@ -61,28 +63,43 @@ const onReplace = window.replaceFileForLocal;
   border-bottom: 1px solid var(--border-color);
 }
 
-.item .preview {
-  line-height: 0;
+.item .file {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
-.item .preview svg {
+.file .preview {
+  display: inline-block;
+  line-height: 0;
+}
+.file .preview svg {
   height: 60px;
   width: 60px;
 }
+.file .name {
+  margin-left: 16px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .item .size {
-  margin-left: 24px;
+  margin-left: auto;
   text-align: right;
-  flex: 1;
 }
 .item .size span {
   margin-left: 8px;
 }
 .size span.reduce {
+  display: inline-block;
   margin-left: 16px;
+  width: 68px;
   color: #0d6;
 }
 .item .operation {
   margin-left: 24px;
+  width: 260px;
+  text-align: right;
 }
 .operation .line {
   margin: 0 4px;

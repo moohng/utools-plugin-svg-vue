@@ -17,7 +17,7 @@ function handleSvgItem({ svgData, originalSvgData, name, path }) {
   const size = new Blob([svgData]).size;
   return {
     key: Date.now(),
-    name: name || `${Date.now()}.svg`,
+    name,
     path,
     original: originalSvgData,
     code: svgData,
@@ -48,10 +48,10 @@ window.addEventListener('paste', (e) => {
   handleSvg(e.clipboardData.getData('text/plain'));
 });
 
-if (typeof utools !== 'undefined') {
+if (typeof utools !== 'undefined' && typeof utools.onPluginEnter === 'function') {
   utools.onPluginEnter(async ({code, type, payload, option}) => {
     console.log('用户进入插件应用', code, type, payload)
-    if (type === 'files') {
+    if (code === 'svg_files' && type === 'files') {
       const files = payload;
       // 读取svg文件
       const contentList = await window.readContentByFiles(files);
@@ -66,6 +66,8 @@ if (typeof utools !== 'undefined') {
           return undefined;
         }
       }).filter(Boolean);
+    } else if (code === 'svg_input' && type === 'regex') {
+      handleSvg(payload);
     }
   });
 } else {
