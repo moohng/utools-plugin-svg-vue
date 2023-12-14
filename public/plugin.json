@@ -1,0 +1,39 @@
+{
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "features": [
+    {
+      "code": "svg_input",
+      "explain": "SVG压缩：将SVG文件转为Base64、CSS编码",
+      "cmds": [
+        "svg",
+        "base64",
+        "压缩",
+        {
+          "type": "regex",
+          "label": "SVG压缩",
+          "match": "/^<svg.+\/svg>$/i",
+          "minLength": 20
+        }
+      ]
+    },
+    {
+      "code": "svg_files",
+      "explain": "SVG压缩",
+      "cmds": [
+        {
+          "type": "files",
+          "label": "SVG压缩",
+          "fileType": "file",
+          "match": "/.svg$/i",
+          "minLength": 1,
+          "maxLength": 10
+        }
+      ]
+    }
+  ],
+  "development": {
+    "main": "http://localhost:8808/#/"
+  }
+}
