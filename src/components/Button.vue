@@ -37,19 +37,18 @@ defineProps({
 .button + .button {
   margin-left: 0.5em;
 }
-.button[data-type*=bg] {
+.button[data-type=bg-danger] {
+  color: #efefef;
+  background: var(--danger-color);
   border-color: var(--danger-color);
 }
-/* .button[data-type*=bg]:hover {
-  background: rgba(--danger-color, 0.6);
-} */
-.button[data-type=bg-danger] {
-  color: #e2e2e2;
-  background: var(--danger-color);
-}
 .button[data-type=default]:hover {
-  color: #447bdf;
+  color: var(--primary-color);
   border-color: currentColor;
+}
+.button[data-type=bg-danger]:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
 }
 .button:disabled {
   opacity: .6;

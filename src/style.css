@@ -16,9 +16,11 @@
   --table-hd-color: #f6f8fb;
   --border-color: #e5e5e5;
 
-  --danger-color: #dc3545;
+  --primary-color: #FC4A49;
+  --danger-color: #F91716;
   --warning-color: #ff9900;
   --success-color: #28a745;
+  /* color: #FFC3C3; */
 }
 
 body {
