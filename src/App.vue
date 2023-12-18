@@ -77,7 +77,7 @@ if (typeof utools !== 'undefined' && typeof utools.onPluginEnter === 'function')
 
 const onReplaceAll = () => {
   const list = svgList.value.filter((item) => item.path);
-  if (svgList.length > 0) {
+  if (list.length > 0) {
     window.replaceFileForLocal(list);
   } else {
     Toast.error('无可替换的本地文件');

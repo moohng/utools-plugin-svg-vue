@@ -2,7 +2,7 @@
   <div class="output">
     <div class="item" v-for="item in list" :key="item.key">
       <div class="file">
-        <i class="preview" v-html="item.code"></i>
+        <i class="preview" :style="{ backgroundImage: `url(${item.base64})` }"></i>
         <span class="name" v-if="item.name">{{ item.name }}</span>
       </div>
       <div class="size">
@@ -70,12 +70,16 @@ const onReplace = window.replaceFileForLocal;
 }
 .file .preview {
   display: inline-block;
-  line-height: 0;
+  height: 44px;
+  width: 44px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.file .preview svg {
+/* .file .preview svg {
   height: 60px;
   width: 60px;
-}
+} */
 .file .name {
   margin-left: 16px;
   width: 160px;

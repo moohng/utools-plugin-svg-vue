@@ -4,7 +4,6 @@
     <div class="bar">
       <div class="stat">成功压缩 {{ count }} 项</div>
       <div class="group">
-        <Button>全部压缩</Button>
         <Button @click="emit('replaceAll')">全部替换</Button>
         <Button type="bg-danger" @click="emit('clear')">清空</Button>
       </div>
