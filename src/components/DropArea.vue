@@ -1,6 +1,6 @@
 <template>
   <div class="drop-area center">
-    <div class="tips">拖放SVG文件到此处，或粘贴SVG代码</div>
+    <div class="tips">粘贴SVG代码到此处、或从资源管理器快捷选取SVG文件</div>
   </div>
 </template>
 
