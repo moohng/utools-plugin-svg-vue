@@ -42,15 +42,16 @@ defineProps({
   background: var(--danger-color);
   border-color: var(--danger-color);
 }
-.button[data-type=default]:hover {
+.button[data-type=default]:hover:not(:disabled) {
   color: var(--primary-color);
   border-color: currentColor;
 }
-.button[data-type=bg-danger]:hover {
+.button[data-type=bg-danger]:hover:not(:disabled) {
   background: var(--primary-color);
   border-color: var(--primary-color);
 }
 .button:disabled {
   opacity: .6;
+  cursor: not-allowed;
 }
 </style>
