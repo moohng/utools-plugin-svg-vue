@@ -13,7 +13,7 @@
         {
           "type": "regex",
           "label": "SVG压缩",
-          "match": "/^<svg[\s\S]*?<\/svg>/g",
+          "match": "/^<svg[^]+<\/svg>/",
           "minLength": 20
         }
       ]
