@@ -22,6 +22,9 @@ devDependencies:
   '@vitejs/plugin-vue':
     specifier: ^4.5.2
     version: 4.5.2(vite@5.0.8)(vue@3.3.11)
+  utools-api-types:
+    specifier: ^4.0.0
+    version: 4.0.0
   vite:
     specifier: ^5.0.8
     version: 5.0.8
@@ -687,6 +690,10 @@ packages:
   /to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
+
+  /utools-api-types@4.0.0:
+    resolution: {integrity: sha512-YFY5jTDBzYdWV3CwkOf2pzbEcw3YLHvCJws+rejND1IWdWgWkXLP600hTUlMB5ordfSb4KiUkpcK8ReerHif0g==}
+    dev: true
 
   /vite@5.0.8:
     resolution: {integrity: sha512-jYMALd8aeqR3yS9xlHd0OzQJndS9fH5ylVgWdB+pxTwxLKdO1pgC5Dlb398BUxpfaBxa4M9oT7j1g503Gaj5IQ==}
