@@ -1,12 +1,10 @@
-@import '@moohng/tui/lib/Toast/style/index.css';
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   /* color-scheme: light dark; */
-  color: #666;
+  color: #333;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,7 +15,6 @@
   --border-color: #e5e5e5;
 
   --primary-color: #FC4A49;
-  --danger-color: #F91716;
   --warning-color: #ff9900;
   --success-color: #28a745;
   /* color: #FFC3C3; */
