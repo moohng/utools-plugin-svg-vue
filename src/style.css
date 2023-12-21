@@ -39,11 +39,3 @@ body {
     --border-color: #444;
   }
 }
-
-.tui-toast[data-position=top] {
-  padding: 6px 16px;
-  top: 24px !important;
-  right: auto;
-  left: 50%;
-  transform: translateX(-50%) translateZ(0);
-}
