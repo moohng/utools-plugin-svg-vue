@@ -11,17 +11,21 @@ const barCSS = css`
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: #f7f8ff;
   border-top: 1px solid var(--border-color);
+  @media (prefers-color-scheme: dark) {
+    background-color: #313233;
+  }
 `
 
-export default function Footer({ count = 0, onReplaceAll = () => {}, onClear = () => {} }) {
+export default function Footer({ count = 0, hasReplace = true, onReplaceAll = () => {}, onClear = () => {} }) {
   return (
     <div>
       <div css={css`height: 62px;`}></div>
       <div css={barCSS}>
         <div>成功压缩 {count} 项</div>
         <Stack css={css`margin-left: auto;`} direction="row" spacing={1}>
-          <Button variant="outlined" onClick={onReplaceAll}>全部替换</Button>
+          {hasReplace && <Button variant="outlined" tools onClick={onReplaceAll}>全部替换</Button>}
           <Button variant="contained" color="error" onClick={onClear}>
             清空
           </Button>

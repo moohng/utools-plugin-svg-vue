@@ -151,7 +151,7 @@ export default function App() {
   return svgList.length > 0 ? (
     <>
       <OutputTable list={svgList} />
-      <Footer count={svgList.length} onReplaceAll={() => onReplaceAll(svgList, enqueueSnackbar)} onClear={() => setSvgList([])} />
+      <Footer count={svgList.length} hasReplace={svgList.some(item => item.path)} onReplaceAll={() => onReplaceAll(svgList, enqueueSnackbar)} onClear={() => setSvgList([])} />
     </>
   ) : <DropArea onUpload={(files) => handleFiles(files)} />
 };
